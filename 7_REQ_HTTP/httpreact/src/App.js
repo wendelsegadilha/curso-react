@@ -13,7 +13,7 @@ const App = () => {
   const [products, setProducts] = useState([]);
 
   //4 - custom hook
-  const {data: items} = useFetch(url);
+  const {data: items, httpConfig} = useFetch(url);
   console.log(items);
   //armazena os dados do formulario
   const [name, setName] = useState("")
@@ -42,6 +42,7 @@ const App = () => {
     }
     console.log(product);
 
+    /*
     const res = await fetch(url, { //requisição do mtipo POST
       method:'POST',
       headers: {
@@ -54,7 +55,11 @@ const App = () => {
     const addedProduct = await res.json();
     //pegando os valores antigos que já existiam na lista e criando uma nova lista com o produto novo
     setProducts((prevProducts) => [...prevProducts, addedProduct])
-
+    */
+    
+    //5 - refatorando POST
+    httpConfig(product, "POST");
+    
     //resetando os dados do formulário (reset states)
     setName('');
     setPrice('');

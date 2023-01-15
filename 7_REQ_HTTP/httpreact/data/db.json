@@ -49,6 +49,11 @@
       "name": "Caixa de Som",
       "price": "45",
       "id": 10
+    },
+    {
+      "name": "Suporte Notebook",
+      "price": "120",
+      "id": 11
     }
   ]
 }
