@@ -14,7 +14,6 @@ const App = () => {
 
   //4 - custom hook
   const {data: items, httpConfig, loading, error} = useFetch(url);
-  console.log(items);
   //armazena os dados do formulario
   const [name, setName] = useState("")
   const [price, setPrice] = useState("")
@@ -35,12 +34,10 @@ const App = () => {
   //enviar o formulario
   const handleSubmit = async (e) => {
     e.preventDefault(); //para nao enviar o formulario (reload da pagina)
-    console.log(name, price);
     const product = {
       'name':name,
       'price':price,
     }
-    console.log(product);
 
     /*
     const res = await fetch(url, { //requisição do mtipo POST
@@ -65,6 +62,10 @@ const App = () => {
     setPrice('');
   };
 
+  const handleExcluir = (id) => {
+    httpConfig(id, 'DELETE');
+  }
+
   return (
     <div>
       <h1>Lista de Produtos</h1>
@@ -74,7 +75,7 @@ const App = () => {
         <ul>
         {items && items.map((product) => ( //valida se existem dadas para executar o map
           <li key={product.id}>
-            {product.name} - R$: {product.price}
+            {product.name} - R$: {product.price} - <button onClick={() => handleExcluir(product.id)}>Excluir</button>
           </li>
         ))}
       </ul>
