@@ -90,7 +90,9 @@ const App = () => {
             <input type="number" name='price' value={price} onChange={(e) => setPrice(e.target.value)} />
           </label>
           <br />
-          <button type='submit'>Cadastrar</button>
+          {/*7 - loading para post*/}
+          {loading && <button type='submit' disabled>Aguarde...</button>}
+          {!loading && <button type='submit'>Cadastrar</button>}
         </form>
       </div>
     </div>
