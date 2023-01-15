@@ -13,7 +13,7 @@ const App = () => {
   const [products, setProducts] = useState([]);
 
   //4 - custom hook
-  const {data: items, httpConfig, loading} = useFetch(url);
+  const {data: items, httpConfig, loading, error} = useFetch(url);
   console.log(items);
   //armazena os dados do formulario
   const [name, setName] = useState("")
@@ -69,7 +69,8 @@ const App = () => {
     <div>
       <h1>Lista de Produtos</h1>
       {loading && <p>Carregando dados...</p>}
-      {!loading &&  
+      {error && <p>{error}</p>}
+      {!error &&  
         <ul>
         {items && items.map((product) => ( //valida se existem dadas para executar o map
           <li key={product.id}>

@@ -14,6 +14,9 @@ export const useFetch = (url) => {
     //6-estado de loading (carregando)
     const [loading, setLoading] = useState(false);
 
+    //7- tratando erros
+    const [error, setError] = useState(null)
+
     const httpConfig = (data, method) => {
         if(method === 'POST'){
             setConfig({
@@ -31,10 +34,15 @@ export const useFetch = (url) => {
         //executa um get na url
         const fetchData = async () => {
             setLoading(true); //carregando os dados
-            //usamos o await pois o retorno pode demorar
-            const res = await fetch(url);
-            const json = await res.json();
-            setData(json); //adiciona o retorno ao data   
+            try{
+                //usamos o await pois o retorno pode demorar
+                const res = await fetch(url);
+                const json = await res.json();
+                setData(json); //adiciona o retorno ao data  
+            }catch(error){
+                console.log(error.message);
+                setError("Houve um erro ao carregar os dados");
+            }
             setLoading(false); //dados carregados
         };
         fetchData(); //executa a função
@@ -54,5 +62,5 @@ export const useFetch = (url) => {
     }, [config, url, method]) //config como variavel de monitoramento para reexecutar a funcao
 
     //export do resultado com o return
-    return {data, httpConfig, loading}; //dado que será utilizado 
+    return {data, httpConfig, loading, error}; //dado que será utilizado 
 }
