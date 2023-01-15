@@ -2,6 +2,9 @@ import React from 'react'
 
 import { useState, useEffect } from 'react'
 
+//4 - ustom hook
+import { useFetch } from './hooks/useFetch';
+
 //url base
 const url = "http://localhost:3000/products";
 
@@ -9,11 +12,15 @@ const App = () => {
 
   const [products, setProducts] = useState([]);
 
+  //4 - custom hook
+  const {data: items} = useFetch(url);
+  console.log(items);
   //armazena os dados do formulario
   const [name, setName] = useState("")
   const [price, setPrice] = useState("")
 
   //1 - resgatando dados da API
+  /*
   useEffect(() => {
     //necessario a funcao ser async para poder usar o await
     async function fetchData() {
@@ -22,7 +29,7 @@ const App = () => {
       setProducts(data);
     }
     fetchData();
-  }, []); //importante informar o array de dependência para evitar loop infinito
+  }, []);*/ //importante informar o array de dependência para evitar loop infinito
 
   //2-Requisições de POST
   //enviar o formulario
@@ -57,7 +64,7 @@ const App = () => {
     <div>
       <h1>Lista de Produtos</h1>
       <ul>
-        {products.map((product) => (
+        {items && items.map((product) => ( //valida se existem dadas para executar o map
           <li key={product.id}>
             {product.name} - R$: {product.price}
           </li>
