@@ -11,6 +11,9 @@ export const useFetch = (url) => {
     const [method, setMethod] = useState(null)
     const [callFetch, setCallFetch] = useState(false)
 
+    //6-estado de loading (carregando)
+    const [loading, setLoading] = useState(false);
+
     const httpConfig = (data, method) => {
         if(method === 'POST'){
             setConfig({
@@ -27,10 +30,12 @@ export const useFetch = (url) => {
     useEffect(() => {
         //executa um get na url
         const fetchData = async () => {
+            setLoading(true); //carregando os dados
             //usamos o await pois o retorno pode demorar
             const res = await fetch(url);
             const json = await res.json();
             setData(json); //adiciona o retorno ao data   
+            setLoading(false); //dados carregados
         };
         fetchData(); //executa a função
     }, [url, callFetch]); //url e callFetch como dependecia para reexecutar a funcao caso existam alteracoes
@@ -49,5 +54,5 @@ export const useFetch = (url) => {
     }, [config, url, method]) //config como variavel de monitoramento para reexecutar a funcao
 
     //export do resultado com o return
-    return {data, httpConfig}; //dado que será utilizado 
+    return {data, httpConfig, loading}; //dado que será utilizado 
 }

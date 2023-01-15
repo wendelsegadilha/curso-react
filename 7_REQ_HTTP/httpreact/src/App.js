@@ -13,7 +13,7 @@ const App = () => {
   const [products, setProducts] = useState([]);
 
   //4 - custom hook
-  const {data: items, httpConfig} = useFetch(url);
+  const {data: items, httpConfig, loading} = useFetch(url);
   console.log(items);
   //armazena os dados do formulario
   const [name, setName] = useState("")
@@ -59,7 +59,7 @@ const App = () => {
     
     //5 - refatorando POST
     httpConfig(product, "POST");
-    
+
     //resetando os dados do formulário (reset states)
     setName('');
     setPrice('');
@@ -68,13 +68,16 @@ const App = () => {
   return (
     <div>
       <h1>Lista de Produtos</h1>
-      <ul>
+      {loading && <p>Carregando dados...</p>}
+      {!loading &&  
+        <ul>
         {items && items.map((product) => ( //valida se existem dadas para executar o map
           <li key={product.id}>
             {product.name} - R$: {product.price}
           </li>
         ))}
       </ul>
+      }
       <div>
         <form onSubmit={handleSubmit}>
           <label>

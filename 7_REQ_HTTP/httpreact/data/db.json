@@ -54,6 +54,11 @@
       "name": "Suporte Notebook",
       "price": "120",
       "id": 11
+    },
+    {
+      "name": "Mesa escritório",
+      "price": "450",
+      "id": 12
     }
   ]
 }
