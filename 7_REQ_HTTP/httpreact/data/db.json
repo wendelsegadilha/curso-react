@@ -1,0 +1,54 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Camisa",
+      "price": 59.9
+    },
+    {
+      "id": 2,
+      "name": "Calça vermelha",
+      "price": 90
+    },
+    {
+      "id": 3,
+      "name": "Boné aba reta",
+      "price": 29.9
+    },
+    {
+      "name": "Mouse HP",
+      "price": "125",
+      "id": 4
+    },
+    {
+      "name": "Teclado Biostar",
+      "price": "45",
+      "id": 5
+    },
+    {
+      "name": "Cadeira Gamer TGX ",
+      "price": "1547",
+      "id": 6
+    },
+    {
+      "name": "Placa de Video FX",
+      "price": "450",
+      "id": 7
+    },
+    {
+      "name": "Monitor Game",
+      "price": "1500",
+      "id": 8
+    },
+    {
+      "name": "Processador AMD 4600G",
+      "price": "850",
+      "id": 9
+    },
+    {
+      "name": "Caixa de Som",
+      "price": "45",
+      "id": 10
+    }
+  ]
+}
