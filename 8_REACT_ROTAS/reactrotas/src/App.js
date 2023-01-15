@@ -1,7 +1,7 @@
 import './App.css';
 
 //1 - config do react router dom
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
 
 //components
 import Navbar from './components/Navbar';
@@ -33,7 +33,8 @@ function App() {
         <Route path='/products/:id/info' element={<Info />} />
         {/* 9 -serach  */}
         <Route path='/search' element={<Search />}/>
-        //7- erro 404
+        {/* 10  - redirect */}
+        <Route path='/company' element={<Navigate to="/about" />}/>        //7- erro 404
         <Route path='*' element={<NotFound />} />
       </Routes>
      </BrowserRouter>
