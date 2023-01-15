@@ -1,0 +1,13 @@
+form {
+    margin: 15px 0;
+    display: flex;
+    justify-content: center;
+    
+}
+
+form input {
+    height: 30px;
+    font-family: Helvetica, sans-serif;
+    font-size: 14px;
+    outline: none;
+}
