@@ -1,0 +1,10 @@
+nav {
+    background: rgb(236, 236, 236);
+    padding: 10px 0;
+    margin-bottom: 50px;
+}
+ul {
+    list-style: none;
+    display: flex;
+    column-gap: 20px;
+}
